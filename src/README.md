@@ -6,6 +6,9 @@ Uma aplicação FastAPI super simples que permite aos alunos visualizar e se ins
 
 - Visualizar todas as atividades extracurriculares disponíveis
 - Inscrever-se em atividades
+- Login de professores e equipe
+- Exibir anuncios dinamicos no topo da pagina
+- Gerenciar anuncios (criar, editar, excluir) para usuarios logados
 
 ## Como começar
 
@@ -30,7 +33,15 @@ Uma aplicação FastAPI super simples que permite aos alunos visualizar e se ins
 | Método | Endpoint                                                          | Descrição                                                            |
 | ------ | ----------------------------------------------------------------- | -------------------------------------------------------------------- |
 | GET    | `/activities`                                                     | Obtém todas as atividades com detalhes e número atual de participantes |
-| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Inscreve-se em uma atividade                                         |
+| POST   | `/activities/{activity_name}/signup?email=student@mergington.edu&teacher_username=<username>` | Inscreve estudante em uma atividade (requer login) |
+| POST   | `/activities/{activity_name}/unregister?email=student@mergington.edu&teacher_username=<username>` | Remove estudante da atividade (requer login) |
+| POST   | `/auth/login?username=<username>&password=<password>` | Realiza login |
+| GET    | `/auth/check-session?username=<username>` | Valida sessao |
+| GET    | `/announcements` | Lista anuncios ativos para exibicao publica |
+| GET    | `/announcements/manage?teacher_username=<username>` | Lista todos os anuncios para gerenciamento (requer login) |
+| POST   | `/announcements?teacher_username=<username>` | Cria anuncio (requer login) |
+| PUT    | `/announcements/{announcement_id}?teacher_username=<username>` | Atualiza anuncio (requer login) |
+| DELETE | `/announcements/{announcement_id}?teacher_username=<username>` | Exclui anuncio (requer login) |
 
 ## Modelo de Dados
 
@@ -46,4 +57,4 @@ A aplicação usa um modelo de dados simples com identificadores significativos:
    - Nome
    - Série
 
-Todos os dados são armazenados em memória, o que significa que serão resetados quando o servidor for reiniciado.
+Os dados sao armazenados no MongoDB local configurado em `backend/database.py`.
