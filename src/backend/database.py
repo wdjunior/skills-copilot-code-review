@@ -217,7 +217,7 @@ initial_teachers = [
 initial_announcements = [
     {
         "_id": "aviso-boas-vindas",
-        "message": "Bem-vindos ao novo semestre! Inscricoes para atividades abertas ate 30/06.",
+        "message": "Bem-vindos ao novo semestre! Inscrições para atividades abertas até 30/06.",
         "starts_at": None,
         "expires_at": "2026-06-30T23:59:59Z",
         "created_by": "principal"
