@@ -72,9 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Authentication state
   let currentUser = null;
 
-  // Announcement state
-  let currentAnnouncements = [];
-
   // Time range mappings for the dropdown
   const timeRanges = {
     morning: { start: "06:00", end: "08:00" }, // Antes das aulas
